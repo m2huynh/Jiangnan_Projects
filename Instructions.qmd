@@ -1,0 +1,502 @@
+---
+title: "Group Data Analysis Presentation"
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+```{r}
+#| label: presentation-download-setup
+#| include: false
+
+library(downloadthis)
+```
+
+# Introduction
+
+The ability to work confidently with data is increasingly important in almost every profession. Organisations use data to understand what has happened, identify patterns, compare groups, evaluate decisions and make predictions about the future. However, working with data involves more than calculating statistics. It also requires you to ask sensible questions, select appropriate methods, interpret results carefully and communicate your findings clearly to others.
+
+This group presentation gives you an opportunity to bring together the skills developed throughout this course. Your group will investigate a dataset, address a research question and communicate the results through a short presentation. You should use a combination of numerical summaries, tables, visualisations and inferential statistical methods to develop a clear and evidence-based answer.
+
+# Forming a group and selecting a topic
+
+First, form a group of **four or five students**. Once your group has been formed, select one of the 21 topics listed below. Each topic is accompanied by a dataset containing one main outcome variable and a range of possible explanatory variables.
+
+You do not need to examine every variable in the dataset. Instead, identify the variables that are most relevant to your research question and use these to develop a focused analysis.
+
+<style>
+.topic-download-table {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+.topic-download-table th {
+  background: #243c59;
+  color: white;
+  padding: 12px 14px;
+  text-align: left;
+}
+.topic-download-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #dde3ea;
+  vertical-align: middle;
+}
+.topic-download-table tbody tr:nth-child(even) {
+  background: #f3f6f9;
+}
+.topic-download-table th:first-child,
+.topic-download-table td:first-child {
+  width: 6%;
+  text-align: center;
+}
+.topic-download-table th:nth-child(2),
+.topic-download-table td:nth-child(2) {
+  width: 17%;
+}
+.topic-download-table th:nth-child(3),
+.topic-download-table td:nth-child(3) {
+  width: 19%;
+}
+.topic-download-table th:nth-child(4),
+.topic-download-table td:nth-child(4) {
+  width: 43%;
+}
+.topic-download-table th:last-child,
+.topic-download-table td:last-child {
+  width: 15%;
+  text-align: left;
+}
+</style>
+
+<table class="topic-download-table">
+<thead>
+<tr>
+<th>Topic</th>
+<th>Area</th>
+<th>Investigation</th>
+<th>Research question</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Business</td>
+<td>Daily retail sales</td>
+<td>Which store, promotion and local conditions are associated with daily sales revenue?</td>
+<td>
+
+```{r download-retail-sales, echo=FALSE}
+download_file(
+  path = "data/01_retail_sales.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Business</td>
+<td>Customer-service satisfaction</td>
+<td>Which features of a service interaction are associated with the customer's satisfaction score?</td>
+<td>
+
+```{r download-customer-service, echo=FALSE}
+download_file(
+  path = "data/02_customer_service_satisfaction.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Business</td>
+<td>Employee productivity</td>
+<td>Which work arrangements and employee characteristics are associated with monthly productivity?</td>
+<td>
+
+```{r download-employee-productivity, echo=FALSE}
+download_file(
+  path = "data/03_employee_productivity.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Engineering and technology</td>
+<td>Laptop battery runtime</td>
+<td>Which device settings, workloads and hardware characteristics are associated with battery runtime?</td>
+<td>
+
+```{r download-battery-runtime, echo=FALSE}
+download_file(
+  path = "data/04_laptop_battery_runtime.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Engineering and technology</td>
+<td>3D-printed component strength</td>
+<td>Which printing choices and environmental conditions are associated with tensile strength?</td>
+<td>
+
+```{r download-printed-strength, echo=FALSE}
+download_file(
+  path = "data/05_3d_printed_part_strength.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Engineering and technology</td>
+<td>Webpage load time</td>
+<td>Which page, server and user conditions are associated with webpage load time?</td>
+<td>
+
+```{r download-webpage-load-time, echo=FALSE}
+download_file(
+  path = "data/06_webpage_load_time.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Medical and health</td>
+<td>Blood-pressure improvement</td>
+<td>Which treatment and patient characteristics are associated with the reduction in systolic blood pressure?</td>
+<td>
+
+```{r download-blood-pressure, echo=FALSE}
+download_file(
+  path = "data/07_blood_pressure_improvement.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Medical and health</td>
+<td>Hospital length of stay</td>
+<td>Which patient, procedure and hospital factors are associated with length of stay following surgery?</td>
+<td>
+
+```{r download-hospital-stay, echo=FALSE}
+download_file(
+  path = "data/08_hospital_length_of_stay.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Medical and health</td>
+<td>Physiotherapy outcomes</td>
+<td>Which treatment and patient characteristics are associated with improvement in pain?</td>
+<td>
+
+```{r download-physiotherapy, echo=FALSE}
+download_file(
+  path = "data/09_physiotherapy_pain_improvement.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Sport</td>
+<td>5 km race performance</td>
+<td>Which training, runner and race-day characteristics are associated with 5 km finishing time?</td>
+<td>
+
+```{r download-race-time, echo=FALSE}
+download_file(
+  path = "data/10_5km_race_time.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Sport</td>
+<td>Basketball free-throw accuracy</td>
+<td>Which preparation, fatigue and testing conditions are associated with free-throw percentage?</td>
+<td>
+
+```{r download-free-throw, echo=FALSE}
+download_file(
+  path = "data/11_basketball_free_throw_accuracy.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Sport</td>
+<td>Football sprint distance</td>
+<td>Which player and match conditions are associated with total high-speed sprint distance?</td>
+<td>
+
+```{r download-football-sprint, echo=FALSE}
+download_file(
+  path = "data/12_football_sprint_distance.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Environment</td>
+<td>Nitrate levels in rivers</td>
+<td>Which catchment, weather and water conditions are associated with nitrate concentration?</td>
+<td>
+
+```{r download-nitrate-levels, echo=FALSE}
+download_file(
+  path = "data/13_river_nitrate_levels.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Environment</td>
+<td>Urban air pollution</td>
+<td>Which traffic, weather and location conditions are associated with PM2.5 concentration?</td>
+<td>
+
+```{r download-air-pollution, echo=FALSE}
+download_file(
+  path = "data/14_urban_air_pollution.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Environment</td>
+<td>Household water use</td>
+<td>Which household, property and weather characteristics are associated with daily water consumption?</td>
+<td>
+
+```{r download-water-use, echo=FALSE}
+download_file(
+  path = "data/15_household_water_use.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Psychology</td>
+<td>Perceived stress</td>
+<td>Which lifestyle, work and social factors are associated with perceived stress?</td>
+<td>
+
+```{r download-perceived-stress, echo=FALSE}
+download_file(
+  path = "data/16_perceived_stress.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Psychology</td>
+<td>Short-term memory</td>
+<td>Which preparation and testing conditions are associated with the number of words recalled?</td>
+<td>
+
+```{r download-memory, echo=FALSE}
+download_file(
+  path = "data/17_short_term_memory.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Psychology</td>
+<td>Procrastination</td>
+<td>Which task, environmental and personal factors are associated with procrastination?</td>
+<td>
+
+```{r download-procrastination, echo=FALSE}
+download_file(
+  path = "data/18_procrastination.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Society and public services</td>
+<td>University exam performance</td>
+<td>Which study, attendance and student circumstances are associated with final exam performance?</td>
+<td>
+
+```{r download-exam-performance, echo=FALSE}
+download_file(
+  path = "data/19_university_exam_performance.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Society and public services</td>
+<td>Commuter journey time</td>
+<td>Which trip, transport and daily conditions are associated with door-to-door commuting time?</td>
+<td>
+
+```{r download-commute-time, echo=FALSE}
+download_file(
+  path = "data/20_commuter_journey_time.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Society and public services</td>
+<td>Public-library program attendance</td>
+<td>Which program, promotion and scheduling characteristics are associated with attendance?</td>
+<td>
+
+```{r download-library-attendance, echo=FALSE}
+download_file(
+  path = "data/21_library_program_attendance.xlsx",
+  button_label = "Download",
+  button_type = "success"
+)
+```
+
+</td>
+</tr>
+</tbody>
+</table>
+
+# Presentation task
+
+Your goal is to use the dataset to address the research question for your selected topic. The presentation should communicate a clear argument supported by appropriate statistical evidence.
+
+Your analysis should include both **descriptive statistics** and **inferential statistics**.
+
+Descriptive statistics may include:
+
+- appropriate measures of centre and spread;
+- frequency or percentage tables;
+- comparisons between relevant groups;
+- graphs showing the distribution of the outcome variable; and
+- visualisations showing relationships between the outcome and selected explanatory variables.
+
+Inferential statistics may include:
+
+- confidence intervals;
+- an appropriate hypothesis test, such as a one-sample, paired-sample or two-sample $t$-test;
+- an analysis of variance, where appropriate; or
+- a simple or multiple linear regression model.
+
+You are not expected to use every method covered in the course. Select methods that help answer your research question and explain why they are appropriate.
+
+::: {.callout-important}
+## Presentation requirements
+
+- Presentations must be **less than 15 minutes** in length.
+- Every group member must speak at least once.
+- Your group will present to the teaching staff and the rest of the class on the second-last day of the course, **Thursday 29 October**.
+- The presentation must include both descriptive and inferential statistics.
+- All tables and figures should have clear titles, labels and units.
+- Your conclusions must be based on the evidence shown in your analysis.
+:::
+
+# Suggested presentation structure
+
+Try to structure the presentation as a story. The audience should understand the problem, follow the analysis and see how the evidence leads to your conclusion.
+
+| Section | What to include |
+|:---|:---|
+| **Introduction** | Introduce the topic, explain why it matters and clearly state the research question. Briefly identify the outcome variable and the explanatory variables that your group will examine. |
+| **Method** | Describe the dataset and the unit of observation. Explain which variables and statistical methods were selected and why they are appropriate for the research question. |
+| **Results** | Present the most important descriptive and inferential results. Use well-designed tables and visualisations, and explain what each result means in the context of the problem. |
+| **Discussion** | Provide a direct answer to the research question. Discuss the practical meaning of the findings, acknowledge important limitations and identify anything that should be investigated further. |
+
+# Preparing an effective presentation
+
+A strong presentation is selective. Avoid filling slides with every calculation or output that your group produced. Instead, include the evidence that is most useful for answering the research question.
+
+When preparing your slides:
+
+- use graphs and tables that can be understood quickly;
+- explain results in the context of the scenario rather than only reporting numbers;
+- distinguish between statistical significance and practical importance;
+- avoid claiming that an association proves causation;
+- ensure that your conclusions match the statistical evidence; and
+- rehearse as a group so that the presentation is coherent and remains within the time limit.
+
+The aim is not simply to demonstrate that your group can calculate statistics. The aim is to show that you can use statistics to investigate a meaningful question and communicate what you have learned.
